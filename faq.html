@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — AI Citation Tracker</title>
+  <meta name="description" content="20+ questions answered about setup, pricing, privacy, features and troubleshooting.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FAQ — AI Citation Tracker">
+  <meta property="og:description" content="20+ questions answered about setup, pricing, privacy, features and troubleshooting.">
+  <meta property="og:url" content="https://aicitationtracker.com/faq.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">📊</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --ink: #05060f;
+  --ink2: #0b0d1a;
+  --ink3: #111425;
+  --ink4: #181d30;
+  --ink5: #1f263a;
+  --edge: rgba(255,255,255,0.06);
+  --edge2: rgba(255,255,255,0.11);
+  --edge3: rgba(255,255,255,0.18);
+  --text: #eef0ff;
+  --text2: #a8b0d0;
+  --text3: #5c6480;
+  --text4: #363d58;
+  --blue: #4f8eff;
+  --blue-dim: rgba(79,142,255,0.12);
+  --blue-glow: rgba(79,142,255,0.25);
+  --violet: #8b5cf6;
+  --violet-dim: rgba(139,92,246,0.12);
+  --green: #34d399;
+  --green-dim: rgba(52,211,153,0.1);
+  --amber: #fbbf24;
+  --red: #f87171;
+  --r: 10px;
+  --r-sm: 7px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  /* backward compat aliases */
+  --bg: #05060f;
+  --surface: #0b0d1a;
+  --surface2: #111425;
+  --border: rgba(255,255,255,0.06);
+  --muted: #5c6480;
+  --accent-blue: #4f8eff;
+  --accent-purple: #8b5cf6;
+  --accent-green: #34d399;
+  --accent-orange: #fbbf24;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(79,142,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,142,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridPan 20s linear infinite;
+}
+@keyframes gridPan { 0%{background-position:0 0} 100%{background-position:60px 60px} }
+@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 64px;
+  background: rgba(5,6,15,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--edge);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px,5vw,80px);
+  transition: height 0.3s ease, box-shadow 0.3s ease;
+}
+.site-nav.scrolled { height: 52px; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+.nav-logo {
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none; color: var(--text);
+}
+.nav-logo-mark { font-size: 20px; line-height: 1; }
+.nav-logo-text {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 16px; font-weight: 700; letter-spacing: -0.3px;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 400; color: var(--text3);
+  text-decoration: none; padding: 6px 12px; border-radius: var(--r-sm);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-links a.active { color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-btn-ghost {
+  font-size: 13px; font-weight: 500; color: var(--text2);
+  background: transparent; border: 1px solid var(--edge2);
+  border-radius: var(--r-sm); padding: 7px 16px; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; text-decoration: none;
+  transition: all 0.2s;
+}
+.nav-btn-ghost:hover { border-color: var(--edge3); color: var(--text); }
+.nav-btn-primary {
+  font-size: 13px; font-weight: 600; color: white;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border: none; border-radius: var(--r-sm);
+  padding: 8px 18px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
+  display: inline-flex; box-shadow: 0 0 20px rgba(79,142,255,0.2);
+}
+.nav-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(79,142,255,0.4); }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 6px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+  background: rgba(5,6,15,0.98); backdrop-filter: blur(20px);
+  z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 32px 24px;
+}
+.mobile-menu.open { display: flex; animation: fadeIn 0.25s ease; }
+.mobile-menu a {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 24px; font-weight: 700; color: var(--text3);
+  text-decoration: none; padding: 12px 0; width: 100%; text-align: center;
+  border-bottom: 1px solid var(--edge); transition: color 0.2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover, .mobile-menu a.active { color: var(--text); }
+.mobile-menu .m-cta {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: white !important; border-radius: var(--r-lg);
+  padding: 16px 40px !important; font-size: 16px !important;
+  margin-top: 8px; border: none !important;
+}
+@media(max-width:900px) {
+  .nav-links, .nav-btn-ghost { display: none; }
+  .nav-hamburger { display: flex; }
+}
+footer {
+  border-top: 1px solid var(--edge);
+  padding: 60px clamp(20px,5vw,80px) 32px;
+  position: relative; z-index: 1;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  padding-bottom: 48px; border-bottom: 1px solid var(--edge);
+}
+.footer-brand-col p { font-size: 13px; color: var(--text3); line-height: 1.7; max-width: 260px; margin: 12px 0 20px; }
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
+.brand-mark { font-size: 20px; }
+.brand { font-family: 'Bricolage Grotesque', sans-serif; font-size: 17px; font-weight: 800; }
+.footer-newsletter { display: flex; gap: 8px; }
+.footer-newsletter input {
+  flex: 1; background: var(--ink3); border: 1px solid var(--edge);
+  border-radius: var(--r-sm); padding: 9px 14px; font-size: 13px;
+  color: var(--text); outline: none; font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s;
+}
+.footer-newsletter input:focus { border-color: var(--blue); }
+.footer-newsletter button {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border: none; border-radius: var(--r-sm); padding: 9px 16px;
+  color: white; font-size: 12px; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.footer-col h4 {
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; color: var(--text);
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--text); }
+.footer-bottom {
+  max-width: 1100px; margin: 24px auto 0;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 12px; color: var(--text4); }
+.footer-socials { display: flex; gap: 10px; }
+.social-btn {
+  width: 32px; height: 32px; background: var(--ink3); border: 1px solid var(--edge);
+  border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center;
+  font-size: 14px; text-decoration: none; transition: border-color 0.2s;
+}
+.social-btn:hover { border-color: var(--edge3); }
+@media(max-width:900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px) { .footer-inner { grid-template-columns: 1fr; } }
+/* UTILITIES */
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(20px,5vw,80px); }
+.section { padding: 100px 0; position: relative; z-index: 1; }
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 16px;
+}
+h2.section-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(28px,4vw,44px); font-weight: 800; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 14px;
+}
+.section-desc { font-size: 17px; color: var(--text2); font-weight: 300; max-width: 520px; line-height: 1.65; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: white; font-size: 15px; font-weight: 500; padding: 14px 28px;
+  border-radius: var(--r); text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 40px rgba(79,142,255,0.25);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(79,142,255,0.4); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--text2); font-size: 14px; text-decoration: none;
+  padding: 14px 20px; border-radius: var(--r);
+  border: 1px solid var(--edge2); transition: color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover { color: var(--text); border-color: var(--edge3); }
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up:nth-child(1){transition-delay:0s} .fade-up:nth-child(2){transition-delay:.08s}
+.fade-up:nth-child(3){transition-delay:.16s} .fade-up:nth-child(4){transition-delay:.24s}
+.fade-up:nth-child(5){transition-delay:.32s} .fade-up:nth-child(6){transition-delay:.40s}
+/* SCROLL TO TOP */
+.scroll-top {
+  position: fixed; bottom: 28px; right: 28px; z-index: 998;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(16px) scale(0.8);
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(79,142,255,0.35); pointer-events: none;
+}
+.scroll-top.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+.scroll-top:hover { box-shadow: 0 6px 28px rgba(79,142,255,0.5); transform: translateY(-2px) scale(1.05); }
+/* COOKIE BANNER */
+.cookie-banner {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 999; background: var(--ink3); border: 1px solid var(--edge2);
+  border-radius: var(--r-lg); padding: 14px 20px;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4); max-width: 560px; width: calc(100% - 48px); font-size: 13px;
+}
+.cookie-banner p { color: var(--text3); line-height: 1.5; flex: 1; }
+.cookie-banner strong { color: var(--text); }
+.cookie-close {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border: none; border-radius: var(--r-sm); color: white;
+  font-size: 12px; font-weight: 600; padding: 8px 16px; cursor: pointer;
+  white-space: nowrap; font-family: 'DM Sans', sans-serif;
+}
+.hero { position:relative;z-index:1;padding:160px clamp(20px,5vw,80px) 80px;text-align:center;overflow:hidden; }
+    .hero-glow { position:absolute;width:700px;height:400px;background:radial-gradient(ellipse,rgba(155,109,255,0.12) 0%,transparent 70%);top:40%;left:50%;transform:translate(-50%,-60%);pointer-events:none; }
+    .hero-sub { font-size:clamp(16px,2vw,18px);color:var(--muted);max-width:560px;margin:0 auto;line-height:1.65;font-weight:300; }
+
+    /* SEARCH */
+    .search-wrap { position:relative;z-index:1;max-width:560px;margin:40px auto 0; }
+    .search-wrap input { width:100%;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px 14px 48px;font-size:15px;color:var(--text);outline:none;font-family:'DM Sans',sans-serif;transition:border-color 0.2s; }
+    .search-wrap input:focus { border-color:var(--accent-blue); }
+    .search-icon { position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--muted); }
+
+    /* CATEGORY TABS */
+    .cat-tabs { position:relative;z-index:1;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:48px 0 60px; }
+    .cat-tab { padding:8px 18px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all 0.2s; }
+    .cat-tab:hover { color:var(--text);border-color:rgba(255,255,255,0.15); }
+    .cat-tab.active { border-color:var(--accent-blue);color:var(--accent-blue);background:rgba(79,142,255,0.08); }
+
+    /* FAQ LAYOUT */
+    .faq-layout { position:relative;z-index:1;padding:0 0 100px; }
+    .faq-cols { display:grid;grid-template-columns:260px 1fr;gap:60px;align-items:start; }
+    .faq-sidebar { position:sticky;top:100px; }
+    .faq-sidebar-title { font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px; }
+    .sidebar-links { list-style:none;display:flex;flex-direction:column;gap:4px; }
+    .sidebar-links a { display:block;font-size:13px;color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:8px;transition:all 0.2s;border-left:2px solid transparent; }
+    .sidebar-links a:hover { color:var(--text);background:var(--surface); }
+    .sidebar-links a.active { color:var(--accent-blue);border-left-color:var(--accent-blue);background:rgba(79,142,255,0.06); }
+
+    .faq-main { display:flex;flex-direction:column;gap:40px; }
+    .faq-category { }
+    .faq-cat-title { font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px; }
+    .faq-cat-icon { font-size:20px; }
+    .faq-item { border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:border-color 0.2s; }
+    .faq-item:hover { border-color:rgba(79,142,255,0.18); }
+    .faq-item.open { border-color:rgba(79,142,255,0.3); }
+    .faq-q { display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;gap:16px;background:var(--surface); }
+    .faq-q span { font-size:14px;font-weight:500;line-height:1.4; }
+    .faq-icon { width:24px;height:24px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:transform 0.3s,background 0.2s;color:var(--muted); }
+    .faq-item.open .faq-icon { transform:rotate(45deg);background:rgba(79,142,255,0.1);color:var(--accent-blue);border-color:rgba(79,142,255,0.3); }
+    .faq-a { max-height:0;overflow:hidden;transition:max-height 0.35s ease;background:var(--surface); }
+    .faq-a-inner { padding:0 22px 18px;font-size:14px;color:var(--muted);line-height:1.75;border-top:1px solid var(--border);padding-top:14px; }
+    .faq-a-inner a { color:var(--accent-blue);text-decoration:none; }
+    .faq-item.open .faq-a { max-height:400px; }
+
+    /* CONTACT CTA */
+    .contact-cta { position:relative;z-index:1;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px clamp(20px,5vw,80px); }
+    .contact-inner { display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;max-width:900px;margin:0 auto; }
+    .contact-card { background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;transition:border-color 0.2s; }
+    .contact-card:hover { border-color:rgba(79,142,255,0.2); }
+    .contact-icon { font-size:28px;margin-bottom:14px;display:block; }
+    .contact-card h4 { font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px; }
+    .contact-card p { font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px; }
+    .contact-card a { font-size:13px;color:var(--accent-blue);font-weight:500;text-decoration:none; }
+
+    /* CTA STRIP */
+    .cta-strip { position:relative;z-index:1;padding:80px clamp(20px,5vw,80px);text-align:center; }
+    .cta-strip h2 { margin-bottom:12px; }
+    .cta-strip p { color:var(--muted);font-size:16px;font-weight:300;max-width:500px;margin:0 auto 32px;line-height:1.65; }
+    .hero-actions { display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center; }
+
+    /* FOOTER */
+    footer { position:relative;z-index:1;border-top:1px solid var(--border); }
+    .footer-top { display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding:60px clamp(20px,5vw,80px) 48px; }
+    .footer-col h4 { font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:18px;color:var(--text);text-transform:uppercase; }
+    .footer-col p { font-size:13px;color:var(--muted);line-height:1.7;max-width:260px; }
+    .footer-col ul { list-style:none;display:flex;flex-direction:column;gap:11px; }
+    .footer-col ul a { font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s; }
+    .footer-col ul a:hover { color:var(--text); }
+    .footer-bottom { border-top:1px solid var(--border);padding:20px clamp(20px,5vw,80px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px; }
+    .footer-bottom p { font-size:12px;color:var(--muted); }
+    .social-btn { width:32px;height:32px;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none;transition:border-color 0.2s; }
+    .social-btn:hover { border-color:rgba(79,142,255,0.3); }
+    .footer-socials { display:flex;gap:10px; }
+
+    @media(max-width:900px) { .faq-cols { grid-template-columns:1fr; } .faq-sidebar { display:none; } .contact-inner { grid-template-columns:1fr; } .footer-top { grid-template-columns:1fr 1fr; } nav .nav-links { display:none; } }
+    @media(max-width:600px) { .footer-top { grid-template-columns:1fr; } }
+
+    /* ── #3 PAGE FADE IN ── */
+    body { animation: pageFadeIn 0.35s ease forwards; }
+    @keyframes pageFadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ── #5 STANDARDISED BORDER RADIUS ── */
+    /* buttons=8px, cards=12px, pills=100px — enforced below */
+
+    /* ── #7 STAGGERED CARD ANIMATIONS ── */
+    .fade-up:nth-child(1) { transition-delay: 0s; }
+    .fade-up:nth-child(2) { transition-delay: 0.08s; }
+    .fade-up:nth-child(3) { transition-delay: 0.16s; }
+    .fade-up:nth-child(4) { transition-delay: 0.24s; }
+    .fade-up:nth-child(5) { transition-delay: 0.32s; }
+    .fade-up:nth-child(6) { transition-delay: 0.40s; }
+
+    /* ── #8 NAV SHRINK ON SCROLL ── */
+    nav { transition: height 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; }
+    nav.scrolled { height: 52px !important; background: rgba(6,8,18,0.97) !important; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+
+    /* ── #9 CARD HOVER GLOW ── */
+    .feat-card, .mf-card, .blog-card, .testi-card, .price-card, .faq-q-card, .plat-card, .value-card, .skill-card, .bstat {
+      transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease !important;
+    }
+    .feat-card:hover, .mf-card:hover, .blog-card:hover, .testi-card:hover, .plat-card:hover, .value-card:hover, .skill-card:hover {
+      box-shadow: 0 0 0 1px rgba(79,142,255,0.3), 0 8px 32px rgba(79,142,255,0.12) !important;
+    }
+    .bstat:hover { box-shadow: 0 0 0 1px rgba(155,109,255,0.3), 0 8px 24px rgba(155,109,255,0.1) !important; }
+
+    /* ── #10 CURSOR POINTER ── */
+    .faq-item, .filter-tab, .cat-tab, .blog-card, .plat-toggle, .feat-card, .mf-card { cursor: pointer; }
+
+    /* ── #11 TYPOGRAPHY SCALE — consolidate body sizes ── */
+    /* Using 12px / 14px / 16px tiers only */
+
+    /* ── #12 COOKIE BANNER ── */
+    .cookie-banner {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 999; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 14px 20px; display: flex; align-items: center; gap: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4); max-width: 560px; width: calc(100% - 48px);
+      animation: slideUpBanner 0.4s ease forwards;
+      font-size: 13px;
+    }
+    @keyframes slideUpBanner { from { opacity:0; transform:translateX(-50%) translateY(20px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+    .cookie-banner p { color: var(--muted); line-height: 1.5; flex:1; }
+    .cookie-banner strong { color: var(--text); }
+    .cookie-close {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      border: none; border-radius: 8px; color: white; font-size: 12px;
+      font-weight: 600; padding: 8px 16px; cursor: pointer; white-space: nowrap;
+      font-family: inherit; transition: opacity 0.2s;
+    }
+    .cookie-close:hover { opacity: 0.85; }
+
+    /* ── #13 ANIMATED HERO GRID ── */
+    body::before { animation: gridPan 20s linear infinite; }
+    @keyframes gridPan { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
+
+    /* ── #4 SCROLL TO TOP ── */
+    .scroll-top {
+      position: fixed; bottom: 88px; right: 28px; z-index: 998;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(16px) scale(0.8);
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(79,142,255,0.35);
+      pointer-events: none;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+    .scroll-top:hover { box-shadow: 0 6px 28px rgba(79,142,255,0.5); transform: translateY(-2px) scale(1.05); }
+    .scroll-top svg { width: 18px; height: 18px; }
+
+    /* ── MOBILE HAMBURGER ── */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; border: none; background: none;
+      z-index: 101;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
+      background: rgba(6,8,18,0.98); backdrop-filter: blur(20px);
+      z-index: 99; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; padding: 32px 24px;
+    }
+    .mobile-nav.open { display: flex; animation: mobileNavIn 0.25s ease; }
+    @keyframes mobileNavIn { from { opacity:0; } to { opacity:1; } }
+    .mobile-nav a {
+      font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 700;
+      color: var(--muted); text-decoration: none; padding: 12px 0;
+      transition: color 0.2s; letter-spacing: -0.5px; width: 100%; text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--text); }
+    .mobile-nav .m-cta {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: white !important; border-radius: 12px; padding: 16px 40px !important;
+      font-size: 16px !important; margin-top: 8px; border: none !important;
+    }
+    @media(max-width:900px) { .hamburger { display: flex !important; } }
+
+  
+    /* ── LOGIN BUTTON ── */
+    .nav-login {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent;
+      color: var(--text) !important;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      text-decoration: none;
+      transition: all 0.2s !important;
+      cursor: pointer;
+    }
+    .nav-login:hover {
+      background: rgba(255,255,255,0.07) !important;
+      border-color: rgba(255,255,255,0.28) !important;
+      color: var(--text) !important;
+    }
+    .nav-login svg { opacity: 0.7; }
+
+  
+</style>
+</head>
+<body style="animation:fadeIn 0.35s ease;">
+
+<!-- NAV -->
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">📊</div>
+    <span class="nav-logo-text">AI Citation Tracker</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="howitworks.html">How It Works</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="faq.html" class="active">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    
+    <a href="index.html#install" class="nav-btn-primary">Install Free →</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="features.html">Features</a>
+  <a href="howitworks.html">How It Works</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="faq.html" class="active">FAQ</a>
+  <a href="about.html">About</a>
+  <a href="index.html#install" class="m-cta">Install Free →</a>
+</div>
+
+<!-- CATEGORY TABS -->
+<div class="wrap">
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="filterCat(this,'all')">All Questions</button>
+    <button class="cat-tab" onclick="filterCat(this,'general')">General</button>
+    <button class="cat-tab" onclick="filterCat(this,'setup')">Setup</button>
+    <button class="cat-tab" onclick="filterCat(this,'pricing')">Pricing</button>
+    <button class="cat-tab" onclick="filterCat(this,'features')">Features</button>
+    <button class="cat-tab" onclick="filterCat(this,'privacy')">Privacy</button>
+    <button class="cat-tab" onclick="filterCat(this,'troubleshooting')">Troubleshooting</button>
+  </div>
+</div>
+
+<!-- FAQ MAIN -->
+<section class="faq-layout">
+  <div class="wrap">
+    <div class="faq-cols">
+
+      <!-- SIDEBAR -->
+      <div class="faq-sidebar">
+        <div class="faq-sidebar-title">Categories</div>
+        <ul class="sidebar-links">
+          <li><a href="#general" class="active">General</a></li>
+          <li><a href="#setup">Setup &amp; Installation</a></li>
+          <li><a href="#pricing-cat">Pricing &amp; API Keys</a></li>
+          <li><a href="#features-cat">Features</a></li>
+          <li><a href="#privacy">Privacy &amp; Security</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+      </div>
+
+      <!-- FAQ CONTENT -->
+      <div class="faq-main" id="faq-main">
+
+        <!-- GENERAL -->
+        <div class="faq-category" id="general" data-cat="general">
+          <div class="faq-cat-title"><span class="faq-cat-icon">💬</span>General</div>
+
+          <div class="faq-item open" data-q="what is ai citation tracking why does it matter">
+            <div class="faq-q"><span>What is AI citation tracking and why does it matter?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">AI citation tracking is the practice of monitoring how often your brand, website, or product is mentioned in the responses that AI chatbots like ChatGPT, Claude, Gemini, and Perplexity generate. As more users turn to AI interfaces instead of traditional search engines to find products and recommendations, appearing in those AI-generated answers has become a new form of brand visibility — sometimes called "Generative Engine Optimization" (GEO).</div></div>
+          </div>
+
+          <div class="faq-item" data-q="which ai platforms does it support">
+            <div class="faq-q"><span>Which AI platforms does the extension support?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Currently four platforms: ChatGPT (OpenAI), Claude (Anthropic), Gemini (Google), and Perplexity. You can use any combination — even just one if that's all you need. Gemini is free; the others require paid API keys.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="how accurate is citation detection">
+            <div class="faq-q"><span>How accurate is the citation detection?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Very accurate. v2.0 introduced smart fuzzy-matching that detects your brand across multiple formats — domain ("loom.com"), name ("Loom"), and possessives ("Loom's"). This produces 3–5× more citations than simple exact-match approaches. It's not perfect — sometimes AI models use indirect references — but it covers the vast majority of meaningful mentions.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="do i need to create an account login">
+            <div class="faq-q"><span>Do I need to create an account or log in?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">No account needed — ever. Install the extension, add your API key(s) in the Settings tab, and start checking. All your data stays locally in your browser. We have no user accounts, no database, no tracking.</div></div>
+          </div>
+        </div>
+
+        <!-- SETUP -->
+        <div class="faq-category" id="setup" data-cat="setup">
+          <div class="faq-cat-title"><span class="faq-cat-icon">⚙️</span>Setup &amp; Installation</div>
+
+          <div class="faq-item" data-q="how do i install the chrome extension">
+            <div class="faq-q"><span>How do I install the Chrome extension?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Download and unzip the extension file. In Chrome, go to <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:12px;">chrome://extensions</code>, enable Developer Mode in the top right, click "Load unpacked", and select the unzipped folder. The extension will appear in your toolbar immediately. Full guide: <a href="howitworks.html">How It Works →</a></div></div>
+          </div>
+
+          <div class="faq-item" data-q="how do i get a free gemini api key">
+            <div class="faq-q"><span>How do I get a free Gemini API key?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a>, sign in with your Google account, and click "Create API Key". Copy the key (it starts with "AIza...") and paste it into the extension's Settings tab under "Gemini API Key". No credit card required. The whole process takes under 2 minutes.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="does it work on other browsers besides chrome firefox safari">
+            <div class="faq-q"><span>Does it work on browsers other than Chrome?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Currently Chrome only (and Chromium-based browsers like Edge and Brave). Firefox and Safari support is on the roadmap but not yet available.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="can i use multiple api keys platforms at once">
+            <div class="faq-q"><span>Can I use multiple platforms simultaneously?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Yes — just add all your API keys in Settings. When you run a check, it queries all platforms that have a key configured in parallel, and shows results for each platform separately in the Results tab.</div></div>
+          </div>
+        </div>
+
+        <!-- PRICING -->
+        <div class="faq-category" id="pricing-cat" data-cat="pricing">
+          <div class="faq-cat-title"><span class="faq-cat-icon">💰</span>Pricing &amp; API Keys</div>
+
+          <div class="faq-item" data-q="is the extension free to download cost">
+            <div class="faq-q"><span>Is the Chrome extension free?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">The extension itself is permanently free to download and use. The only costs are the AI API calls you make directly to providers. Gemini's free tier means you can run an unlimited number of checks at $0. See <a href="pricing.html">Pricing →</a> for a full breakdown.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="what does one check cost per query">
+            <div class="faq-q"><span>What does one "check" cost?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">One check = one query sent to one platform. Gemini: $0. Perplexity: ~$0.005. Claude: ~$0.015. ChatGPT: ~$0.030. So if you run 5 queries across all 4 platforms, that's roughly $0.25 total (with Gemini contributing $0).</div></div>
+          </div>
+
+          <div class="faq-item" data-q="are there hidden fees monthly subscription">
+            <div class="faq-q"><span>Are there any hidden fees or subscriptions?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">None whatsoever. We charge nothing. The extension is free. API costs go directly to the AI providers (Google, Anthropic, OpenAI, Perplexity) through your own accounts — we're not involved in that transaction at all.</div></div>
+          </div>
+        </div>
+
+        <!-- FEATURES -->
+        <div class="faq-category" id="features-cat" data-cat="features">
+          <div class="faq-cat-title"><span class="faq-cat-icon">⚡</span>Features</div>
+
+          <div class="faq-item" data-q="how does competitor comparison work">
+            <div class="faq-q"><span>How does the competitor comparison feature work?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Enter up to 5 competitor domains alongside your own in the Compare tab. The extension runs the same queries for every domain across all configured AI platforms, then produces a side-by-side ranking table with citation counts, gap scores, and AI-generated recommendations on which queries to focus on.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="what is auto generate queries">
+            <div class="faq-q"><span>What does "Auto-Generate Queries" do?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">It uses the AI to infer your industry and product category from your domain name, then generates 5–10 high-signal search queries that are most likely to surface citations. You can edit, remove, or add to the generated list before running a check. It works for both your domain and competitor domains.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="can i export download results csv">
+            <div class="faq-q"><span>Can I export or download results?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Yes. From the Results tab, you can copy all results to your clipboard in a formatted layout, or download a CSV file containing each query, platform, citation count, and whether citations were found. The CSV is ideal for monthly reporting or tracking trends in a spreadsheet.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="how many competitor domains can i compare">
+            <div class="faq-q"><span>How many competitor domains can I compare at once?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Up to 5 competitor domains at a time, plus your own domain — so 6 total in a single comparison run. This covers most use cases without generating excessive API usage or wait times.</div></div>
+          </div>
+        </div>
+
+        <!-- PRIVACY -->
+        <div class="faq-category" id="privacy" data-cat="privacy">
+          <div class="faq-cat-title"><span class="faq-cat-icon">🔒</span>Privacy &amp; Security</div>
+
+          <div class="faq-item" data-q="is my api key secure safe stored">
+            <div class="faq-q"><span>Is my API key stored securely?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Yes. API keys are stored using Chrome's built-in secure local storage (<code style="background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:12px;">chrome.storage.local</code>), which is sandboxed to the extension. They are never sent to our servers — because we don't have any. Queries go directly from your browser to the AI provider's API.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="do you collect any data analytics tracking">
+            <div class="faq-q"><span>Do you collect any data or track usage?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">No. We collect nothing. There are no analytics, no telemetry, no usage tracking of any kind. The extension has no backend server. Everything runs locally in your browser.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="what permissions does the extension request">
+            <div class="faq-q"><span>What permissions does the extension request?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Only "storage" (to save your API keys and settings locally) and host permissions for the four AI provider APIs (anthropic.com, openai.com, googleapis.com, perplexity.ai). It doesn't request access to your tabs, browsing history, clipboard, or any other sensitive browser data.</div></div>
+          </div>
+        </div>
+
+        <!-- TROUBLESHOOTING -->
+        <div class="faq-category" id="troubleshooting" data-cat="troubleshooting">
+          <div class="faq-cat-title"><span class="faq-cat-icon">🛠️</span>Troubleshooting</div>
+
+          <div class="faq-item" data-q="getting 401 error invalid api key">
+            <div class="faq-q"><span>I'm getting a 401 error — what does it mean?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">A 401 error means your API key is invalid or has been revoked. Go to the relevant API provider's dashboard, create a new key, and update it in the extension's Settings tab. Make sure there are no extra spaces when pasting the key.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="getting zero citations none found">
+            <div class="faq-q"><span>I'm getting 0 citations — is something wrong?</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Zero citations can be a completely normal result, especially for newer or lesser-known brands. Test first with a well-known domain like "salesforce.com" or "notion.so" to verify the extension is working. If those return citations but yours returns zero, it means AI models aren't currently referencing your brand — which is exactly what you need to know so you can fix it.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="extension not loading not working popup blank">
+            <div class="faq-q"><span>The extension popup is blank or not loading.</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">Try these steps in order: (1) Reload the extension at <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:12px;">chrome://extensions</code> using the refresh icon. (2) Hard refresh any open Chrome windows with Ctrl+Shift+R. (3) Disable and re-enable the extension. (4) If the issue persists, try re-loading the unpacked folder from scratch.</div></div>
+          </div>
+
+          <div class="faq-item" data-q="results seem wrong inconsistent different every time">
+            <div class="faq-q"><span>Results seem inconsistent — different every time I run.</span><div class="faq-icon">+</div></div>
+            <div class="faq-a"><div class="faq-a-inner">This is expected and not a bug. AI models are non-deterministic — they generate different responses each time even for the same query. Citation counts will naturally vary between runs. For reliable trend data, run checks at the same time each month and average results across multiple runs.</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<div class="contact-cta">
+  <div style="text-align:center;margin-bottom:40px;">
+    <div class="section-label" style="text-align:center;">Still need help?</div>
+    <h2>We're here for you</h2>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-card fade-up">
+      <span class="contact-icon">📖</span>
+      <h4>Read the docs</h4>
+      <p>Full setup guide, feature walkthroughs, and troubleshooting tips.</p>
+      <a href="howitworks.html">View setup guide →</a>
+    </div>
+    <div class="contact-card fade-up">
+      <span class="contact-icon">🐛</span>
+      <h4>Report a bug</h4>
+      <p>Found something that's not working right? Let us know on GitHub.</p>
+      <a href="#">Open GitHub issue →</a>
+    </div>
+    <div class="contact-card fade-up">
+      <span class="contact-icon">💬</span>
+      <h4>Get in touch</h4>
+      <p>Have a question not covered here? Reach out directly.</p>
+      <a href="#">Contact us →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to start tracking?</h2>
+  <p>Install the extension for free and run your first citation check in under 3 minutes.</p>
+  <div class="hero-actions">
+    <a href="index.html#install" class="btn-primary">Install Free →</a>
+    <a href="howitworks.html" class="btn-secondary">Setup guide →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">📊</div>
+        AI Citation Tracker
+      </a>
+      <p>Track how often AI mentions your brand. Monitor visibility, benchmark competitors, and grow your AI presence.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="your@email.com" id="footerEmail">
+        <button onclick="footerSub(this)">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="howitworks.html">How It Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="index.html#install">Download v2.4</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="usecases.html">Use Cases</a></li>
+        <li><a href="comparison.html">Comparisons</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sitemap.html">Sitemap</a></li>
+        <li><a href="https://www.linkedin.com/in/pavan-a-m-b81b81290/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="#">Twitter / X</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 AI Citation Tracker · v2.4 · All rights reserved</p>
+    <div class="footer-socials">
+      <a href="#" class="social-btn">𝕏</a>
+      <a href="#" class="social-btn">⌥</a>
+      <a href="#" class="social-btn">🔺</a>
+    </div>
+    <p>Built with ❤ for SEOs & content marketers</p>
+  </div>
+</footer>
+<button class="scroll-top" aria-label="Back to top">
+  <svg viewBox="0 0 18 18" fill="none" width="18" height="18"><path d="M9 14V4M4 9l5-5 5 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<div class="cookie-banner" style="display:none;">
+  <p><strong>No cookies here.</strong> Zero tracking, analytics, or cookies. Your API keys stay in your browser only.</p>
+  <button class="cookie-close">Got it ✓</button>
+</div>
+<script>
+function footerSub(btn) {
+  const email = document.getElementById('footerEmail')?.value;
+  if (email?.includes('@')) {
+    btn.textContent = '✓ Done!';
+    btn.style.background = 'var(--green)';
+    if(document.getElementById('footerEmail')) document.getElementById('footerEmail').value='';
+    setTimeout(() => { btn.textContent='Subscribe'; btn.style.background=''; }, 3000);
+  }
+}
+</script>
+<script>
+// Nav shrink on scroll
+const nav = document.querySelector('.site-nav');
+const stBtn = document.querySelector('.scroll-top');
+window.addEventListener('scroll', () => {
+  if (nav) nav.classList.toggle('scrolled', scrollY > 60);
+  if (stBtn) stBtn.classList.toggle('visible', scrollY > 400);
+}, {passive: true});
+if (stBtn) stBtn.addEventListener('click', () => scrollTo({top:0,behavior:'smooth'}));
+
+// Hamburger
+const hbg = document.getElementById('navHamburger');
+const mm = document.getElementById('mobileMenu');
+if (hbg && mm) {
+  hbg.addEventListener('click', () => {
+    hbg.classList.toggle('open');
+    mm.classList.toggle('open');
+    document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+  });
+  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hbg.classList.remove('open'); mm.classList.remove('open'); document.body.style.overflow = '';
+  }));
+}
+
+// Page transition
+document.querySelectorAll('a[href$=".html"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const h = a.getAttribute('href');
+    if (!h.startsWith('http') && !h.startsWith('#')) {
+      e.preventDefault();
+      document.body.style.animation = 'fadeIn 0.25s ease reverse forwards';
+      setTimeout(() => location.href = h, 220);
+    }
+  });
+});
+
+// Cookie banner
+if (!localStorage.getItem('cookie_ack')) {
+  const b = document.querySelector('.cookie-banner');
+  if (b) {
+    b.style.display = 'flex';
+    b.querySelector('.cookie-close')?.addEventListener('click', () => {
+      b.remove(); localStorage.setItem('cookie_ack','1');
+    });
+  }
+} else { document.querySelector('.cookie-banner')?.remove(); }
+
+// Fade-up observer
+const fEls = document.querySelectorAll('.fade-up');
+const fObs = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('visible'); fObs.unobserve(e.target); }
+}), {threshold: 0.08});
+fEls.forEach(el => fObs.observe(el));
+</script>
+<script>
+  // ── #8 NAV SHRINK ──
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 60);
+    // #4 Scroll to top visibility
+    const st = document.querySelector('.scroll-top');
+    if (st) st.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  // ── #4 SCROLL TO TOP ──
+  const stBtn = document.querySelector('.scroll-top');
+  if (stBtn) stBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ── #1 HAMBURGER MENU ──
+  const hbg = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  if (hbg && mobileNav) {
+    hbg.addEventListener('click', () => {
+      hbg.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hbg.classList.remove('open');
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // ── #12 COOKIE BANNER ──
+  if (!localStorage.getItem('cookie_ack')) {
+    const banner = document.querySelector('.cookie-banner');
+    if (banner) {
+      banner.style.display = 'flex';
+      banner.querySelector('.cookie-close').addEventListener('click', () => {
+        banner.style.animation = 'slideUpBanner 0.3s ease reverse forwards';
+        setTimeout(() => banner.remove(), 300);
+        localStorage.setItem('cookie_ack', '1');
+      });
+    }
+  } else {
+    const banner = document.querySelector('.cookie-banner');
+    if (banner) banner.remove();
+  }
+
+  // ── #6 PAGE TRANSITION — outbound links ──
+  document.querySelectorAll('a[href$=".html"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href.startsWith('http') && !href.startsWith('#')) {
+        e.preventDefault();
+        document.body.style.animation = 'pageFadeIn 0.25s ease reverse forwards';
+        setTimeout(() => window.location.href = href, 220);
+      }
+    });
+  });
+</script>
+</body>
+</html>

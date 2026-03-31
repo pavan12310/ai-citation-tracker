@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use Cases — AI Citation Tracker</title>
+  <meta name="description" content="For SEO agencies, SaaS companies, eCommerce and content marketers.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Use Cases — AI Citation Tracker">
+  <meta property="og:description" content="For SEO agencies, SaaS companies, eCommerce and content marketers.">
+  <meta property="og:url" content="https://aicitationtracker.com/usecases.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">📊</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --ink: #05060f;
+  --ink2: #0b0d1a;
+  --ink3: #111425;
+  --ink4: #181d30;
+  --ink5: #1f263a;
+  --edge: rgba(255,255,255,0.06);
+  --edge2: rgba(255,255,255,0.11);
+  --edge3: rgba(255,255,255,0.18);
+  --text: #eef0ff;
+  --text2: #a8b0d0;
+  --text3: #5c6480;
+  --text4: #363d58;
+  --blue: #4f8eff;
+  --blue-dim: rgba(79,142,255,0.12);
+  --blue-glow: rgba(79,142,255,0.25);
+  --violet: #8b5cf6;
+  --violet-dim: rgba(139,92,246,0.12);
+  --green: #34d399;
+  --green-dim: rgba(52,211,153,0.1);
+  --amber: #fbbf24;
+  --red: #f87171;
+  --r: 10px;
+  --r-sm: 7px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  /* backward compat aliases */
+  --bg: #05060f;
+  --surface: #0b0d1a;
+  --surface2: #111425;
+  --border: rgba(255,255,255,0.06);
+  --muted: #5c6480;
+  --accent-blue: #4f8eff;
+  --accent-purple: #8b5cf6;
+  --accent-green: #34d399;
+  --accent-orange: #fbbf24;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(79,142,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,142,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridPan 20s linear infinite;
+}
+@keyframes gridPan { 0%{background-position:0 0} 100%{background-position:60px 60px} }
+@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 64px;
+  background: rgba(5,6,15,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--edge);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px,5vw,80px);
+  transition: height 0.3s ease, box-shadow 0.3s ease;
+}
+.site-nav.scrolled { height: 52px; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+.nav-logo {
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none; color: var(--text);
+}
+.nav-logo-mark { font-size: 20px; line-height: 1; }
+.nav-logo-text {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 16px; font-weight: 700; letter-spacing: -0.3px;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 400; color: var(--text3);
+  text-decoration: none; padding: 6px 12px; border-radius: var(--r-sm);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-links a.active { color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-btn-ghost {
+  font-size: 13px; font-weight: 500; color: var(--text2);
+  background: transparent; border: 1px solid var(--edge2);
+  border-radius: var(--r-sm); padding: 7px 16px; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; text-decoration: none;
+  transition: all 0.2s;
+}
+.nav-btn-ghost:hover { border-color: var(--edge3); color: var(--text); }
+.nav-btn-primary {
+  font-size: 13px; font-weight: 600; color: white;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border: none; border-radius: var(--r-sm);
+  padding: 8px 18px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
+  display: inline-flex; box-shadow: 0 0 20px rgba(79,142,255,0.2);
+}
+.nav-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(79,142,255,0.4); }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 6px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+  background: rgba(5,6,15,0.98); backdrop-filter: blur(20px);
+  z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 32px 24px;
+}
+.mobile-menu.open { display: flex; animation: fadeIn 0.25s ease; }
+.mobile-menu a {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 24px; font-weight: 700; color: var(--text3);
+  text-decoration: none; padding: 12px 0; width: 100%; text-align: center;
+  border-bottom: 1px solid var(--edge); transition: color 0.2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover, .mobile-menu a.active { color: var(--text); }
+.mobile-menu .m-cta {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: white !important; border-radius: var(--r-lg);
+  padding: 16px 40px !important; font-size: 16px !important;
+  margin-top: 8px; border: none !important;
+}
+@media(max-width:900px) {
+  .nav-links, .nav-btn-ghost { display: none; }
+  .nav-hamburger { display: flex; }
+}
+footer {
+  border-top: 1px solid var(--edge);
+  padding: 60px clamp(20px,5vw,80px) 32px;
+  position: relative; z-index: 1;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  padding-bottom: 48px; border-bottom: 1px solid var(--edge);
+}
+.footer-brand-col p { font-size: 13px; color: var(--text3); line-height: 1.7; max-width: 260px; margin: 12px 0 20px; }
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
+.brand-mark { font-size: 20px; }
+.brand { font-family: 'Bricolage Grotesque', sans-serif; font-size: 17px; font-weight: 800; }
+.footer-newsletter { display: flex; gap: 8px; }
+.footer-newsletter input {
+  flex: 1; background: var(--ink3); border: 1px solid var(--edge);
+  border-radius: var(--r-sm); padding: 9px 14px; font-size: 13px;
+  color: var(--text); outline: none; font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s;
+}
+.footer-newsletter input:focus { border-color: var(--blue); }
+.footer-newsletter button {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border: none; border-radius: var(--r-sm); padding: 9px 16px;
+  color: white; font-size: 12px; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.footer-col h4 {
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; color: var(--text);
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--text); }
+.footer-bottom {
+  max-width: 1100px; margin: 24px auto 0;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 12px; color: var(--text4); }
+.footer-socials { display: flex; gap: 10px; }
+.social-btn {
+  width: 32px; height: 32px; background: var(--ink3); border: 1px solid var(--edge);
+  border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center;
+  font-size: 14px; text-decoration: none; transition: border-color 0.2s;
+}
+.social-btn:hover { border-color: var(--edge3); }
+@media(max-width:900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px) { .footer-inner { grid-template-columns: 1fr; } }
+/* UTILITIES */
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(20px,5vw,80px); }
+.section { padding: 100px 0; position: relative; z-index: 1; }
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 16px;
+}
+h2.section-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(28px,4vw,44px); font-weight: 800; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 14px;
+}
+.section-desc { font-size: 17px; color: var(--text2); font-weight: 300; max-width: 520px; line-height: 1.65; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: white; font-size: 15px; font-weight: 500; padding: 14px 28px;
+  border-radius: var(--r); text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 40px rgba(79,142,255,0.25);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(79,142,255,0.4); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--text2); font-size: 14px; text-decoration: none;
+  padding: 14px 20px; border-radius: var(--r);
+  border: 1px solid var(--edge2); transition: color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover { color: var(--text); border-color: var(--edge3); }
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up:nth-child(1){transition-delay:0s} .fade-up:nth-child(2){transition-delay:.08s}
+.fade-up:nth-child(3){transition-delay:.16s} .fade-up:nth-child(4){transition-delay:.24s}
+.fade-up:nth-child(5){transition-delay:.32s} .fade-up:nth-child(6){transition-delay:.40s}
+/* SCROLL TO TOP */
+.scroll-top {
+  position: fixed; bottom: 28px; right: 28px; z-index: 998;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(16px) scale(0.8);
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(79,142,255,0.35); pointer-events: none;
+}
+.scroll-top.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+.scroll-top:hover { box-shadow: 0 6px 28px rgba(79,142,255,0.5); transform: translateY(-2px) scale(1.05); }
+/* COOKIE BANNER */
+.cookie-banner {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 999; background: var(--ink3); border: 1px solid var(--edge2);
+  border-radius: var(--r-lg); padding: 14px 20px;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4); max-width: 560px; width: calc(100% - 48px); font-size: 13px;
+}
+.cookie-banner p { color: var(--text3); line-height: 1.5; flex: 1; }
+.cookie-banner strong { color: var(--text); }
+.cookie-close {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border: none; border-radius: var(--r-sm); color: white;
+  font-size: 12px; font-weight: 600; padding: 8px 16px; cursor: pointer;
+  white-space: nowrap; font-family: 'DM Sans', sans-serif;
+}
+
+</style>
+</head>
+<body style="animation:fadeIn 0.35s ease;">
+
+<!-- NAV -->
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">📊</div>
+    <span class="nav-logo-text">AI Citation Tracker</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="howitworks.html">How It Works</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    
+    <a href="index.html#install" class="nav-btn-primary">Install Free →</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="features.html">Features</a>
+  <a href="howitworks.html">How It Works</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="faq.html">FAQ</a>
+  <a href="about.html">About</a>
+  <a href="index.html#install" class="m-cta">Install Free →</a>
+</div>
+
+<!-- AGENCIES -->
+<div class="uc-section active" id="uc-agencies">
+  <div class="wrap">
+    <div class="uc-hero fade-up">
+      <div>
+        <div class="uc-tag">For SEO Agencies</div>
+        <h2>Turn AI visibility into a premium client deliverable</h2>
+        <p class="uc-desc">Your clients are asking "are we showing up in ChatGPT?" You need a repeatable, scalable way to answer that — and benchmark it against competitors. AI Citation Tracker plugs directly into your monthly reporting workflow.</p>
+        <div class="uc-wins">
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Add AI visibility scores to every monthly SEO report</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Show clients exactly which queries competitors own in AI</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Justify content recommendations with citation gap data</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Export CSV for import into your own reporting dashboards</div>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:center;">
+        <div style="font-size:48px;margin-bottom:16px;">🏢</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;">Agency Report Preview</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;">AI Visibility Score<br><span style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">74/100</span><br>Up from 61 last month</div>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-around;font-size:12px;color:var(--muted);">
+          <div>ChatGPT<br><strong style="color:var(--text);">12 cit.</strong></div>
+          <div>Gemini<br><strong style="color:var(--text);">18 cit.</strong></div>
+          <div>Claude<br><strong style="color:var(--text);">9 cit.</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="metrics-row">
+      <div class="metric-box fade-up"><span class="metric-num">50+</span><div class="metric-label">Client domains tracked per agency</div></div>
+      <div class="metric-box fade-up"><span class="metric-num">4</span><div class="metric-label">AI platforms per report</div></div>
+      <div class="metric-box fade-up"><span class="metric-num">CSV</span><div class="metric-label">Export format for dashboards</div></div>
+      <div class="metric-box fade-up"><span class="metric-num">5</span><div class="metric-label">Competitors compared per client</div></div>
+    </div>
+    <div class="section-label">Agency workflow</div>
+    <div class="uc-workflow">
+      <div class="uc-step fade-up"><div class="uc-step-num">01</div><h4>Baseline each client</h4><p>Run a citation check on every client domain at the start of each month. Record the baseline score across all 4 platforms.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">02</div><h4>Run competitor comparison</h4><p>Add each client's top 3–5 competitors. Identify which queries competitors are winning and which are opportunities.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">03</div><h4>Prioritise content gaps</h4><p>Use gap analysis to identify the highest-value queries. Build targeted content to capture citations on those queries.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">04</div><h4>Export and report</h4><p>Download CSV, build your monthly client report, and show citation growth month-over-month as a KPI alongside organic traffic.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">05</div><h4>Track improvement</h4><p>Re-run the same queries monthly. Chart citation rate over time. Show clients the direct impact of your GEO content strategy.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">06</div><h4>Upsell GEO retainer</h4><p>AI visibility is a new service line. Use the data to demonstrate value and upsell a dedicated GEO retainer on top of existing SEO work.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SAAS -->
+<div class="uc-section" id="uc-saas">
+  <div class="wrap">
+    <div class="uc-hero fade-up">
+      <div>
+        <div class="uc-tag" style="background:rgba(155,109,255,0.1);border-color:rgba(155,109,255,0.25);color:var(--accent-purple);">For SaaS Companies</div>
+        <h2>Know which AI platforms recommend your product</h2>
+        <p class="uc-desc">When a potential customer asks "what's the best CRM?" or "which project management tool should I use?" — are you in that answer? For SaaS companies, AI citations are becoming a major acquisition channel.</p>
+        <div class="uc-wins">
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Track which feature queries drive the most citations</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Benchmark against direct SaaS competitors instantly</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Discover which platform (ChatGPT vs Gemini) favours you most</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Feed citation data back into your content and positioning strategy</div>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(155,109,255,0.3);border-radius:16px;padding:32px;">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Query: "best project management tool for remote teams"</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:rgba(79,142,255,0.08);border-radius:8px;font-size:13px;"><span>Your SaaS</span><span style="color:var(--accent-blue);font-weight:700;">Cited ✓</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface2);border-radius:8px;font-size:13px;color:var(--muted);"><span>Competitor A</span><span style="color:#ef4444;">Not cited</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:rgba(46,204,113,0.06);border-radius:8px;font-size:13px;"><span>Competitor B</span><span style="color:var(--accent-green);font-weight:700;">Cited ✓</span></div>
+        </div>
+        <div style="margin-top:16px;padding:12px;background:rgba(79,142,255,0.06);border:1px solid rgba(79,142,255,0.15);border-radius:8px;font-size:12px;color:var(--muted);">💡 You and Competitor B are tied. Focus on "async collaboration" queries where you're ahead.</div>
+      </div>
+    </div>
+    <div class="metrics-row">
+      <div class="metric-box fade-up"><span class="metric-num">3x</span><div class="metric-label">More citations with targeted GEO content</div></div>
+      <div class="metric-box fade-up"><span class="metric-num">4</span><div class="metric-label">AI platforms covering SaaS buying decisions</div></div>
+      <div class="metric-box fade-up"><span class="metric-num">∞</span><div class="metric-label">Queries to track (no limits)</div></div>
+      <div class="metric-box fade-up"><span class="metric-num">$0</span><div class="metric-label">To get started with Gemini</div></div>
+    </div>
+    <div class="section-label">SaaS workflow</div>
+    <div class="uc-workflow">
+      <div class="uc-step fade-up"><div class="uc-step-num">01</div><h4>Map your buying queries</h4><p>Identify the queries your ideal customers ask AI when evaluating tools in your category — "best X for Y" patterns.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">02</div><h4>Check your citation rate</h4><p>Run those queries across all 4 platforms. See where you're cited, where you're not, and which platform favours you most.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">03</div><h4>Compare to direct competitors</h4><p>Add your top 5 competitors. Use the ranking table to see exactly who's winning which queries in the AI arena.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">04</div><h4>Build gap-filling content</h4><p>Create dedicated comparison pages, use-case articles, and feature explainers targeting the queries where you're losing.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">05</div><h4>Track impact monthly</h4><p>Re-run the same queries monthly. Measure how new content affects your citation rate and share the wins with your team.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">06</div><h4>Share with leadership</h4><p>Export data as a report showing AI acquisition channel performance alongside organic and paid metrics.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ECOMMERCE -->
+<div class="uc-section" id="uc-ecommerce">
+  <div class="wrap">
+    <div class="uc-hero fade-up">
+      <div>
+        <div class="uc-tag" style="background:rgba(46,204,113,0.1);border-color:rgba(46,204,113,0.25);color:var(--accent-green);">For eCommerce</div>
+        <h2>Get cited when shoppers ask AI for product recommendations</h2>
+        <p class="uc-desc">Shoppers increasingly ask AI "what's the best running shoe under $150?" or "recommend a skincare routine for dry skin." For eCommerce brands, appearing in those answers drives high-intent traffic that converts.</p>
+        <div class="uc-wins">
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Track citations for product category and buying queries</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Compare visibility against marketplace competitors</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Identify which product lines get AI-recommended most</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Inform product description and review content strategy</div>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(46,204,113,0.3);border-radius:16px;padding:28px;">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">Top cited queries this month</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:10px 14px;background:rgba(46,204,113,0.06);border:1px solid rgba(46,204,113,0.2);border-radius:8px;font-size:13px;">"best wireless headphones under $100" <span style="float:right;color:var(--accent-green);font-weight:600;">8 citations</span></div>
+          <div style="padding:10px 14px;background:rgba(79,142,255,0.06);border:1px solid rgba(79,142,255,0.15);border-radius:8px;font-size:13px;">"noise cancelling earbuds review" <span style="float:right;color:var(--accent-blue);font-weight:600;">5 citations</span></div>
+          <div style="padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--muted);">"best gaming headset 2025" <span style="float:right;color:#64748b;">0 citations</span></div>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--accent-orange);">⚠️ Gap: "gaming headset" — opportunity to target</div>
+      </div>
+    </div>
+    <div class="uc-workflow">
+      <div class="uc-step fade-up"><div class="uc-step-num">01</div><h4>Find your buying queries</h4><p>List the product recommendation queries your category drives: "best X under $Y", "top X for Z use case", "X vs Y comparison".</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">02</div><h4>Check citation coverage</h4><p>Run all queries. See which product lines get cited, which platforms recommend you, and where gaps exist.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">03</div><h4>Enrich product content</h4><p>AI models cite brands with comprehensive, specific, trustworthy content. Add detailed specs, comparison tables, and expert reviews.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">04</div><h4>Target gap queries</h4><p>Prioritise creating content around queries where competitors get cited but you don't. These are your highest-ROI content investments.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">05</div><h4>Track seasonally</h4><p>Run citation checks before peak seasons (holidays, back-to-school). Ensure your products are primed for AI recommendations when intent is highest.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">06</div><h4>Measure and optimise</h4><p>Correlate citation rate changes with traffic and revenue trends. Double down on what's driving AI-referred conversions.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT MARKETERS -->
+<div class="uc-section" id="uc-content">
+  <div class="wrap">
+    <div class="uc-hero fade-up">
+      <div>
+        <div class="uc-tag" style="background:rgba(255,140,66,0.1);border-color:rgba(255,140,66,0.25);color:var(--accent-orange);">For Content Marketers</div>
+        <h2>Know which content earns AI citations — and make more of it</h2>
+        <p class="uc-desc">Every piece of content you publish is an opportunity to get cited by AI. But without tracking, you're flying blind. AI Citation Tracker shows you exactly which content types, topics, and formats earn the most citations.</p>
+        <div class="uc-wins">
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Measure which blog posts and landing pages drive AI citations</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Track citation impact of new content within days of publishing</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Inform editorial calendar with citation gap data</div>
+          <div class="uc-win"><div class="uc-win-dot">✓</div>Prove content ROI beyond pageviews and organic traffic</div>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(255,140,66,0.3);border-radius:16px;padding:28px;">
+        <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Content impact tracker</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 12px;background:rgba(46,204,113,0.06);border-radius:8px;font-size:12px;"><span>"Ultimate GEO guide 2025"</span><span style="color:var(--accent-green);font-weight:700;">+14 cit.</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 12px;background:rgba(79,142,255,0.06);border-radius:8px;font-size:12px;"><span>"ChatGPT vs Gemini comparison"</span><span style="color:var(--accent-blue);font-weight:700;">+9 cit.</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 12px;background:var(--surface2);border-radius:8px;font-size:12px;color:var(--muted);"><span>"Company news roundup"</span><span style="color:#64748b;">0 cit.</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 12px;background:rgba(255,140,66,0.06);border-radius:8px;font-size:12px;"><span>"AI visibility for marketers"</span><span style="color:var(--accent-orange);font-weight:700;">+6 cit.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="uc-workflow">
+      <div class="uc-step fade-up"><div class="uc-step-num">01</div><h4>Audit existing content</h4><p>Run queries related to your published articles and guides. See which pieces are already earning citations and which are invisible to AI.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">02</div><h4>Identify high-citation formats</h4><p>Look for patterns: do comparison articles earn more citations than listicles? Do how-to guides outperform news posts?</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">03</div><h4>Build a citation-first calendar</h4><p>Plan future content around queries with the highest citation potential. Prioritise evergreen, authoritative formats over timely pieces.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">04</div><h4>Measure new content impact</h4><p>Run citation checks 2–4 weeks after publishing new content. See if it's been picked up by AI models and on which platforms.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">05</div><h4>Optimise underperforming posts</h4><p>For content that earns zero citations, analyse what competitors' cited content does differently. Update and enrich your versions.</p></div>
+      <div class="uc-step fade-up"><div class="uc-step-num">06</div><h4>Report to stakeholders</h4><p>Use citation data as an additional content KPI alongside organic traffic. Show leadership how your content drives AI visibility.</p></div>
+    </div>
+  </div>
+</div>
+
+<div style="position:relative;z-index:1;background:var(--surface);border-top:1px solid var(--border);padding:60px clamp(20px,5vw,80px);text-align:center;">
+  <div class="section-label" style="text-align:center;">Start Today</div>
+  <h2 style="margin-bottom:12px;">Which team are you?</h2>
+  <p style="color:var(--muted);font-size:16px;font-weight:300;max-width:480px;margin:0 auto 32px;line-height:1.65;">AI Citation Tracker works for every team doing growth. Install free and run your first check in 3 minutes.</p>
+  <div class="hero-actions">
+    <a href="index.html#install" class="btn-primary">Install Free →</a>
+    <a href="pricing.html" class="btn-secondary">View pricing →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">📊</div>
+        AI Citation Tracker
+      </a>
+      <p>Track how often AI mentions your brand. Monitor visibility, benchmark competitors, and grow your AI presence.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="your@email.com" id="footerEmail">
+        <button onclick="footerSub(this)">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="howitworks.html">How It Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="index.html#install">Download v2.4</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="usecases.html">Use Cases</a></li>
+        <li><a href="comparison.html">Comparisons</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sitemap.html">Sitemap</a></li>
+        <li><a href="https://www.linkedin.com/in/pavan-a-m-b81b81290/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="#">Twitter / X</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 AI Citation Tracker · v2.4 · All rights reserved</p>
+    <div class="footer-socials">
+      <a href="#" class="social-btn">𝕏</a>
+      <a href="#" class="social-btn">⌥</a>
+      <a href="#" class="social-btn">🔺</a>
+    </div>
+    <p>Built with ❤ for SEOs & content marketers</p>
+  </div>
+</footer>
+<button class="scroll-top" aria-label="Back to top">
+  <svg viewBox="0 0 18 18" fill="none" width="18" height="18"><path d="M9 14V4M4 9l5-5 5 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<div class="cookie-banner" style="display:none;">
+  <p><strong>No cookies here.</strong> Zero tracking, analytics, or cookies. Your API keys stay in your browser only.</p>
+  <button class="cookie-close">Got it ✓</button>
+</div>
+<script>
+function footerSub(btn) {
+  const email = document.getElementById('footerEmail')?.value;
+  if (email?.includes('@')) {
+    btn.textContent = '✓ Done!';
+    btn.style.background = 'var(--green)';
+    if(document.getElementById('footerEmail')) document.getElementById('footerEmail').value='';
+    setTimeout(() => { btn.textContent='Subscribe'; btn.style.background=''; }, 3000);
+  }
+}
+</script>
+<script>
+// Nav shrink on scroll
+const nav = document.querySelector('.site-nav');
+const stBtn = document.querySelector('.scroll-top');
+window.addEventListener('scroll', () => {
+  if (nav) nav.classList.toggle('scrolled', scrollY > 60);
+  if (stBtn) stBtn.classList.toggle('visible', scrollY > 400);
+}, {passive: true});
+if (stBtn) stBtn.addEventListener('click', () => scrollTo({top:0,behavior:'smooth'}));
+
+// Hamburger
+const hbg = document.getElementById('navHamburger');
+const mm = document.getElementById('mobileMenu');
+if (hbg && mm) {
+  hbg.addEventListener('click', () => {
+    hbg.classList.toggle('open');
+    mm.classList.toggle('open');
+    document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+  });
+  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hbg.classList.remove('open'); mm.classList.remove('open'); document.body.style.overflow = '';
+  }));
+}
+
+// Page transition
+document.querySelectorAll('a[href$=".html"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const h = a.getAttribute('href');
+    if (!h.startsWith('http') && !h.startsWith('#')) {
+      e.preventDefault();
+      document.body.style.animation = 'fadeIn 0.25s ease reverse forwards';
+      setTimeout(() => location.href = h, 220);
+    }
+  });
+});
+
+// Cookie banner
+if (!localStorage.getItem('cookie_ack')) {
+  const b = document.querySelector('.cookie-banner');
+  if (b) {
+    b.style.display = 'flex';
+    b.querySelector('.cookie-close')?.addEventListener('click', () => {
+      b.remove(); localStorage.setItem('cookie_ack','1');
+    });
+  }
+} else { document.querySelector('.cookie-banner')?.remove(); }
+
+// Fade-up observer
+const fEls = document.querySelectorAll('.fade-up');
+const fObs = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('visible'); fObs.unobserve(e.target); }
+}), {threshold: 0.08});
+fEls.forEach(el => fObs.observe(el));
+</script>
+<script>
+  const navEl=document.querySelector('nav');
+  const stBtn=document.querySelector('.scroll-top');
+  window.addEventListener('scroll',()=>{
+    navEl.classList.toggle('scrolled',window.scrollY>60);
+    if(stBtn)stBtn.classList.toggle('visible',window.scrollY>400);
+  },{passive:true});
+  if(stBtn)stBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const hbg=document.querySelector('.hamburger');
+  const mNav=document.querySelector('.mobile-nav');
+  if(hbg&&mNav){hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mNav.classList.toggle('open');document.body.style.overflow=mNav.classList.contains('open')?'hidden':'';});mNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbg.classList.remove('open');mNav.classList.remove('open');document.body.style.overflow='';}));}
+  if(!localStorage.getItem('cookie_ack')){const b=document.querySelector('.cookie-banner');if(b){b.style.display='flex';b.querySelector('.cookie-close').addEventListener('click',()=>{b.style.animation='slideUpBanner 0.3s ease reverse forwards';setTimeout(()=>b.remove(),300);localStorage.setItem('cookie_ack','1');});}}else{const b=document.querySelector('.cookie-banner');if(b)b.remove();}
+  document.querySelectorAll('a[href$=".html"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(!h.startsWith('http')&&!h.startsWith('#')){e.preventDefault();document.body.style.animation='pageFadeIn 0.25s ease reverse forwards';setTimeout(()=>window.location.href=h,220);}});});
+  const fels=document.querySelectorAll('.fade-up');
+  const fobs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');fobs.unobserve(i.target);}}),{threshold:0.08});
+  fels.forEach(el=>fobs.observe(el));
+</script>
+</body>
+</html>
